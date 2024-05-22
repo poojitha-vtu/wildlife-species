@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <style>
+        body {
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with the path to your image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background */
+            font-family: Arial, sans-serif; /* Font family */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            color: #fff; /* White text color */
+            margin-bottom: 30px; /* Add some space below the heading */
+            font-size: 24px; /* Larger font size */
+        }
+        .result-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%;
+            text-align: center;
+            margin-top: 20px; /* Add margin from the top */
+        }
+        .result-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* Center the image and add margin */
+            border: 5px solid #006400; /* Dark green border */
+            border-radius: 10px; /* Rounded corners */
+        }
+        .result-details {
+            font-size: 20px; /* Larger font size */
+            color: #333; /* Dark gray text color */
+            text-align: center;
+            line-height: 1.5; /* Increase line height */
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Predicted Result</h2>
+
+    <div class="result-container">
+        <img src="{{ url_for('static', filename='uploaded_image.jpg') }}" alt="Predicted Image" class="result-image" style="max-width: 300px;">
+         <p class="result-details" style="font-size: 24px; color: #006400; border: 2px solid #006400; padding: 10px; border-radius: 5px; animation: fadeIn 1s ease-in-out;">Species: {{ predicted_class }}</p>
+        <p class="result-details" style="font-size: 20px; color: #333;">Confidence: {{ confidence }}</p>
+        <p class="result-details" style="font-size: 20px; color: #333;">Description: {{ species_description }}</p>
+    </div>
+</body>
+</html>

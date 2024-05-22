@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-nqTvTD4MXz3GnzWzJi5OZkxdYrw5L4ThyOb4+38hAfNDD0EbcUWyEBw+xE00ybtEz3gVeUGkxM1/dRQmKO8WLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .state-data {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .state-data p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .representatives {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.representatives li {
+    background-color: #8B4513;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+        .representatives li i {
+            margin-right: 10px;
+        }
+        .representatives li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-leaf"></i> Wildlife Data for {{ state_data[0] }} <i class="fas fa-leaf"></i></h1>
+        <div class="state-data">
+            <div style="background-color: #EFECCA; padding: 10px; border-radius: 10px;">
+                <p><i class="fas fa-map-marker-alt"></i> State Area: {{ state_data[1] }} km²</p>
+                <p><i class="fas fa-warehouse"></i> Number of Wildlife Sanctuaries: {{ state_data[2] }}</p>
+                <p><i class="fas fa-tree"></i> Area of Wildlife Sanctuaries: {{ state_data[3] }} km²</p>
+            </div>
+            <p style="margin-top: 20px;">Wildlife Sanctuary Representatives:</p>
+            <ul class="representatives">
+                {% for representative in state_data[4].split(',') %}
+                    <li><i class="fas fa-users"></i> {{ representative }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="/">Back to select state</a>
+    </div>
+</body>
+</html>
